@@ -2,7 +2,7 @@
 
 namespace TestePloomes.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace TestePloomes.Migrations
                     Idade = table.Column<int>(nullable: false),
                     Sexo = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
-                    Celular = table.Column<string>(maxLength: 13, nullable: false)
+                    Celular = table.Column<string>(maxLength: 14, nullable: false)
                 },
                 constraints: table =>
                 {

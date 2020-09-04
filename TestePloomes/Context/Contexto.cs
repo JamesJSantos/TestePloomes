@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TestePloomes.Models;
-using DbContext = Microsoft.EntityFrameworkCore.DbContext;
 
 namespace TestePloomes.Context
 {
@@ -17,7 +16,8 @@ namespace TestePloomes.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=TestePloomes;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=tcp:testeploomesjames.database.windows.net,1433;Initial Catalog=TestePloomes;Persist Security Info=False;User ID=testeploomes;
+                Password=T3stePloomes;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         public virtual DbSet<Cliente> Clientes { get; set; }

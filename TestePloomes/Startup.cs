@@ -21,8 +21,8 @@ namespace TestePloomes
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=TestePloomes;
-Trusted_Connection=True;";
+            var connection = @"Server=tcp:testeploomesjames.database.windows.net,1433;Initial Catalog=TestePloomes;Persist Security Info=False;User ID=testeploomes;
+                Password=T3stePloomes;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             services.AddDbContext<Contexto>(options => options.UseSqlServer(connection));
             services.AddTransient<ClienteService>();
             services.AddMvc();
@@ -31,10 +31,10 @@ Trusted_Connection=True;";
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
 
             app.UseRouting();
 

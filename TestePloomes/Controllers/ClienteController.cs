@@ -26,8 +26,8 @@ namespace TestePloomes.Controllers
         {
             var response = await _service.GetAll();
 
-            if (response == null)
-                return NotFound();
+            if (response.Count == 0)
+                return NotFound("Nenhum cliente encontrado!");
 
             return Ok(response);
         }
@@ -38,9 +38,6 @@ namespace TestePloomes.Controllers
         {
             var response = await _service.GetById(id);
 
-            if (response == null)
-                return NotFound();
-
             return Ok(response);
 
         }
@@ -49,13 +46,10 @@ namespace TestePloomes.Controllers
         [Route("create")]
         public async Task<IActionResult> Create([FromBody] ClienteViewModel cliente)
         {
-            if (cliente == null)
-                return BadRequest();
-
             var response = await _service.Create(cliente);
 
-            if (!response)
-                return BadRequest(String.Format("CPF já cadastrado."));
+            if (!response.Status)
+                return BadRequest(response.ErrorMessage);
 
             return Ok();
         }
@@ -64,15 +58,10 @@ namespace TestePloomes.Controllers
         [Route("edit")]
         public async Task<IActionResult> Edit([FromBody] ClienteViewModel cliente)
         {
-            if (cliente == null)
-            {
-                return BadRequest();
-            }
-
             var response = await _service.Edit(cliente);
 
-            if (!response)
-                return BadRequest(String.Format("CPF já cadastrado."));
+            if (!response.Status)
+                return BadRequest("CPF inválido.");
 
             return Ok();
         }
@@ -82,9 +71,6 @@ namespace TestePloomes.Controllers
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var response = await _service.Delete(id);
-
-            if (!response)
-                return BadRequest();
 
             return Ok();
         }

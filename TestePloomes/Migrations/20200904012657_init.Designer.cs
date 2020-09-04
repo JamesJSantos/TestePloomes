@@ -9,14 +9,14 @@ using TestePloomes.Context;
 namespace TestePloomes.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200811044517_Final")]
-    partial class Final
+    [Migration("20200904012657_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
